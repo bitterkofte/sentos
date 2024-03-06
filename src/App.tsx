@@ -1,14 +1,16 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { InputBar } from './components/InputBar'
+import { SentenceList } from './components/SentenceList'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <p>test</p>
-    </>
+    <div className='min-h-lvh flex flex-col justify-center items-center gap-5 bg-slate-800 text-slate-200'>
+      <p className='font-bold'>sentos</p>
+      <InputBar />
+      <SentenceList/>
+    </div>
   )
 }
 
