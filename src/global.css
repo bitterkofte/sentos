@@ -52,6 +52,9 @@ body,
   .smoother-5 {
     @apply transition-all duration-500
   }
+  .smoother-i {
+    @apply transition-all duration-[2000ms]
+  }
   .bg-lumen-0 {
     @apply bg-white dark:bg-neutral-400
   }
