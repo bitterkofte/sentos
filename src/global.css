@@ -2,20 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 /* html,
 body,
 :root {
   height: 100%;
 } */
+
 .simple-keyboard {
-  background: #4b4b4b;
+  background: #202224;
 }
 .simple-keyboard.hg-theme-default {
   width: 600px;
-  /* color: black; */
+  color: #e2b714;
 }
 .simple-keyboard .hg-button {
-  background: #666666;
+  background: #2c2e31;
+  border-color: #735c09;
+  border: none;
+  transition: all 100ms;
+}
+.simple-keyboard .hg-button:hover {
+  background: #333538;
+}
+.simple-keyboard .hg-button:active {
+  background: #3c3f42;
+  transform: scale(0.96);
 }
 
 /*  50 - 500 */

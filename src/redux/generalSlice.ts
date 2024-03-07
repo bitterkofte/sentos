@@ -28,19 +28,15 @@ export const generalSlice = createSlice({
   name: 'general',
   initialState,
   reducers: {
-    increment: (state) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
-      state.value += 1
-    },
-    decrement: (state) => {
-      state.value -= 1
-    },
-    incrementByAmount: (state, action: PayloadAction<number>) => {
-      state.value += action.payload
-    },
+    // increment: (state) => {
+    //   state.value += 1
+    // },
+    // decrement: (state) => {
+    //   state.value -= 1
+    // },
+    // incrementByAmount: (state, action: PayloadAction<number>) => {
+    //   state.value += action.payload
+    // },
     setSentenceText: (state, action: PayloadAction<string>) => {
       state.sentenceText = action.payload
     },
@@ -48,22 +44,33 @@ export const generalSlice = createSlice({
       // state.sentences = [...state.sentences, action.payload]
       state.sentences.push(action.payload)
       const storedValue = localStorage.getItem("sentences");
-      console.log('storedValue: ', storedValue)
+      // console.log('storedValue: ', storedValue)
       if (storedValue) {
         const parsedValue = JSON.parse(storedValue)
         parsedValue.push(action.payload)
         localStorage.setItem("sentences", JSON.stringify(parsedValue));
       } else localStorage.setItem("sentences", JSON.stringify([action.payload]));
     },
+    deleteSentence: (state, action: PayloadAction<number>) => {
+      state.sentences = state.sentences.filter(s => s.createdAt !== action.payload)
+      localStorage.setItem("sentences", JSON.stringify(state.sentences));
+    },
+    toggleFav: (state, action: PayloadAction<number>) => {
+      const updatedData = state.sentences.map((item) => {
+        if (item.createdAt === action.payload) return { ...item, fav: item.fav ? false : true };
+        return item;
+      });
+      state.sentences = updatedData;
+      localStorage.setItem("sentences", JSON.stringify(updatedData));
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { 
-  increment,
-  decrement,
-  incrementByAmount,
+export const {
   setSentenceText,
   setSentences,
+  deleteSentence,
+  toggleFav,
 } = generalSlice.actions
 export default generalSlice.reducer
