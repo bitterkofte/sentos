@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setSentenceText, setSentences } from "../redux/generalSlice";
+import { setSentences } from "../redux/generalSlice";
 import { Keyboard } from "@phosphor-icons/react";
 
 import { KeyboardReact as SimpleKeyboard } from "react-simple-keyboard";
