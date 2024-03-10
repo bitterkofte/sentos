@@ -2,9 +2,7 @@ import { useState } from 'react'
 import { InputBar } from './components/InputBar'
 import { SentenceList } from './components/SentenceList'
 import { SentencesType } from './redux/generalSlice';
-import { ExportButton } from './components/ExportButton';
-import { ImportButton } from './components/ImportButton';
-import { Toaster } from 'sonner';
+import { Settings } from './components/Settings';
 
 function App() {
   const [sentenceModal, setSentenceModal] = useState<boolean>(false);
@@ -12,14 +10,10 @@ function App() {
   const toggleModal = () => setSentenceModal(m => !m)
   return (
     <div className='min-h-lvh flex flex-col justify-center items-center gap-5 bg-slate-800 text-slate-200'>
-      <Toaster />
       <p className='font-bold'>sentos</p>
       <InputBar />
       <SentenceList picker={setSelectedSentence} toggleModal={toggleModal} />
-      <div className='fixed right-3 bottom-3 flex flex-col gap-3'>
-        <ImportButton/>
-        <ExportButton />
-      </div>
+      <Settings />
 
       <div onClick={toggleModal} className={`fixed w-full h-full flex justify-center items-center backdrop-blur-smCANCEL bg-half-black smoother-3 ${sentenceModal ? "visible" : "invisible opacity-0 delay-200"}`}>
         <div onClick={() => setSentenceModal(false)} className={`p-5 rounded-lg bg-amber-800 smoother-3 ${sentenceModal ? "scale-100" : "scale-0"}`}>

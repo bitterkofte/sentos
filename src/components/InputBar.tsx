@@ -42,6 +42,7 @@ export const InputBar = () => {
         <input
           type="text"
           className="w-80 px-4 py-2 bg-transparent border-4 rounded-2xl outline-none"
+          maxLength={200}
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           onKeyDown={enterHandler}
