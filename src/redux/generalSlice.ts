@@ -16,7 +16,7 @@ export interface GeneralStateType {
 
 const localSentences: [] = localStorage.getItem("sentences") ? JSON.parse(localStorage.getItem("sentences") as string) : [];
 
-console.log('localSentences: ', localSentences)
+// console.log('localSentences: ', localSentences)
 
 const initialState: GeneralStateType = {
   value: 0,
@@ -51,6 +51,10 @@ export const generalSlice = createSlice({
         localStorage.setItem("sentences", JSON.stringify(parsedValue));
       } else localStorage.setItem("sentences", JSON.stringify([action.payload]));
     },
+    makeSentences: (state, action: PayloadAction<SentencesType[]>) => {
+      state.sentences = action.payload;
+      localStorage.setItem("sentences", JSON.stringify(action.payload));
+    },
     deleteSentence: (state, action: PayloadAction<number>) => {
       state.sentences = state.sentences.filter(s => s.createdAt !== action.payload)
       localStorage.setItem("sentences", JSON.stringify(state.sentences));
@@ -70,6 +74,7 @@ export const generalSlice = createSlice({
 export const {
   setSentenceText,
   setSentences,
+  makeSentences,
   deleteSentence,
   toggleFav,
 } = generalSlice.actions

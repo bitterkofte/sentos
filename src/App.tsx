@@ -3,6 +3,8 @@ import { InputBar } from './components/InputBar'
 import { SentenceList } from './components/SentenceList'
 import { SentencesType } from './redux/generalSlice';
 import { ExportButton } from './components/ExportButton';
+import { ImportButton } from './components/ImportButton';
+import { Toaster } from 'sonner';
 
 function App() {
   const [sentenceModal, setSentenceModal] = useState<boolean>(false);
@@ -10,10 +12,12 @@ function App() {
   const toggleModal = () => setSentenceModal(m => !m)
   return (
     <div className='min-h-lvh flex flex-col justify-center items-center gap-5 bg-slate-800 text-slate-200'>
+      <Toaster />
       <p className='font-bold'>sentos</p>
       <InputBar />
       <SentenceList picker={setSelectedSentence} toggleModal={toggleModal} />
-      <div className='fixed right-3 bottom-3'>
+      <div className='fixed right-3 bottom-3 flex flex-col gap-3'>
+        <ImportButton/>
         <ExportButton />
       </div>
 

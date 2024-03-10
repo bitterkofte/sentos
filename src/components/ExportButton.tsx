@@ -1,4 +1,5 @@
 import { SentencesType } from "../redux/generalSlice";
+import { useAppSelector } from "../redux/hooks";
 
 // const downloadJSON = (data: any, fileName: string) => {
 //   const dataStr = `data:application/json;charset=utf-8,${encodeURIComponent(JSON.stringify(data))}`;
@@ -10,7 +11,6 @@ import { SentencesType } from "../redux/generalSlice";
 //   link.remove();
 // };
 
-
 const downloadJSON = (data: SentencesType[]) => {
   const tarih = new Date();
   const jsonString = JSON.stringify(data);
@@ -19,24 +19,18 @@ const downloadJSON = (data: SentencesType[]) => {
 
   const link = document.createElement('a');
   link.href = url;
-  link.download =  `My_Notes_At_${tarih.getHours()}.${tarih.getMinutes()}.${tarih.getSeconds()}-${new Intl.DateTimeFormat("tr-tr").format(tarih)}`;
+  link.download =  `My_Notes_At_${tarih.getHours()}.${tarih.getMinutes()}.${tarih.getSeconds()}-${new Intl.DateTimeFormat("tr-tr").format(tarih)}.json`;
   link.click();
 
   // Release object URL after download
   window.URL.revokeObjectURL(url);
 };
 
-// const consoleDate = () => {
-//   const tarih = new Date();
-//   const myDate = `My_Notes_At_${tarih.getHours()}.${tarih.getMinutes()}.${tarih.getSeconds()}-${new Intl.DateTimeFormat("tr-tr").format(tarih)}` 
-  
-//   console.log('myDate: ', myDate)
-// }
-
 
 export const ExportButton = () => {
+  const { sentences } = useAppSelector(s => s.general)
   return (
-    <button className="p-3 bg-sky-800 rounded-lg" onClick={() => downloadJSON()}>Export your notes as JSON</button>
+    <button className="p-3 bg-sky-800 rounded-lg" onClick={() => downloadJSON(sentences)}>Export</button>
     // <button className="p-3 bg-sky-800 rounded-lg" onClick={consoleDate}>Export your notes as JSON</button>
   );
 };
