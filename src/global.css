@@ -40,7 +40,28 @@ body,
   background: paint(squircle);
   --squircle-smooth: 1;
   --squircle-radius: 20px;
+  /* --squircle-outline: 2px; */
   --squircle-fill: rgb(0, 76, 104);
+}
+.squircle-keyboard {
+  /* width: 200px; */
+  /* height: 200px; */
+  background: paint(squircle);
+  --squircle-smooth: 1;
+  --squircle-radius: 20px;
+  --squircle-outline: 2px;
+  --squircle-fill: #f59e0b;
+  color: #f59e0b;
+}
+.squircle-keyboard-clicked {
+  /* width: 200px; */
+  /* height: 200px; */
+  background: paint(squircle);
+  --squircle-smooth: 1;
+  --squircle-radius: 20px;
+  /* --squircle-outline: 2px; */
+  --squircle-fill: #f59e0b;
+  color: #1c1c1c;
 }
 
 /*  50 - 500 */

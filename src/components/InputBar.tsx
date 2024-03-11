@@ -42,7 +42,7 @@ export const InputBar = () => {
       <div className="flex items-center gap-5">
         <input
           type="text"
-          className="w-80 px-4 py-2 bg-transparent border-4 rounded-2xl outline-none"
+          className="w-80 px-4 py-2 bg-transparent border-2 focus:border-[#f59e0b] rounded-2xl outline-none smoother-3"
           maxLength={200}
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
@@ -51,9 +51,9 @@ export const InputBar = () => {
         />
         <button
           onClick={() => setIsKBOpen(s => !s)}
-          className="p-2 bg-amber-500 rounded-xl text-neutral-800 active:scale-95 smoother"
+          className={`p-2 active:scale-95 smoother ${isKBOpen ? "squircle-keyboard-clicked" : "squircle-keyboard"}`}
         >
-          <PiKeyboard size={30} />
+          <PiKeyboard size={26} />
         </button>
       </div>
       {/* {isKBOpen && ( */}

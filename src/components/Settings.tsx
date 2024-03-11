@@ -2,13 +2,20 @@
 import { HiOutlineCog8Tooth } from "react-icons/hi2";
 import { ImportButton } from './ImportButton'
 import { ExportButton } from './ExportButton'
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { useClickOutside } from "../hooks/useClickOutside";
 
 export const Settings = () => {
   const [isSettings, setIsSettings] = useState<boolean>(false);
+  const settingsRef = useRef<HTMLDivElement>(null);
+  useClickOutside({
+    ref: settingsRef,
+    handler: () => setIsSettings(false)
+  });
+
   const toggleSettings = () => setIsSettings(s => !s)
   return (
-    <div className='fixed right-3 bottom-3 flex flex-col gap-3 items-end'>
+    <div ref={settingsRef} className='fixed right-3 bottom-3 flex flex-col gap-3 items-end'>
       <div className={`flex flex-col gap-3 rounded-lg overflow-hidden smoother-3 ease-in-out ${isSettings ? "max-h-32" : "max-h-0"}`}>
         <ImportButton />
         <ExportButton />
