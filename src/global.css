@@ -33,6 +33,16 @@ body,
   transform: scale(0.96);
 }
 
+/* use background */
+.squircle {
+  /* width: 200px; */
+  /* height: 200px; */
+  background: paint(squircle);
+  --squircle-smooth: 1;
+  --squircle-radius: 20px;
+  --squircle-fill: rgb(0, 76, 104);
+}
+
 /*  50 - 500 */
 /* 100 - 600 */
 /* 200 - 700 */

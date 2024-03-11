@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSentences } from "../redux/generalSlice";
-import { Keyboard } from "@phosphor-icons/react";
+// import { Keyboard } from "@phosphor-icons/react";
+import { PiKeyboard } from "react-icons/pi";
 
 import { KeyboardReact as SimpleKeyboard } from "react-simple-keyboard";
 import russianLayout from "simple-keyboard-layouts/build/layouts/russian";
@@ -52,7 +53,7 @@ export const InputBar = () => {
           onClick={() => setIsKBOpen(s => !s)}
           className="p-2 bg-amber-500 rounded-xl text-neutral-800 active:scale-95 smoother"
         >
-          <Keyboard size={30} />
+          <PiKeyboard size={30} />
         </button>
       </div>
       {/* {isKBOpen && ( */}

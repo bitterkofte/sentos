@@ -3,6 +3,7 @@ import { toast } from "sonner";
 import { SentencesType, makeSentences } from "../redux/generalSlice";
 import { useAppDispatch } from "../redux/hooks";
 import { useRef } from "react";
+import { HiArrowUpTray } from "react-icons/hi2";
 
 
 export const ImportButton = () => {
@@ -58,8 +59,9 @@ export const ImportButton = () => {
   }
 
   return (
-    <label className="p-3 bg-sky-800 rounded-lg cursor-pointer" htmlFor="fileInput">
+    <label className="p-3 flex items-center gap-2 bg-sky-800 rounded-lg hover:bg-sky-700 smoother-2 cursor-pointer" htmlFor="fileInput">
       <input className="hidden" type="file" id="fileInput" accept=".json" onChange={importJSON} ref={fileInputRef} />
+      <HiArrowUpTray size={20} />
       Import
     </label>
   )

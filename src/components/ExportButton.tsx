@@ -1,6 +1,7 @@
 import { toast } from "sonner";
 import { SentencesType } from "../redux/generalSlice";
 import { useAppSelector } from "../redux/hooks";
+import { HiArrowDownTray } from "react-icons/hi2";
 
 // const downloadJSON = (data: any, fileName: string) => {
 //   const dataStr = `data:application/json;charset=utf-8,${encodeURIComponent(JSON.stringify(data))}`;
@@ -35,6 +36,6 @@ const downloadJSON = (data: SentencesType[]) => {
 export const ExportButton = () => {
   const { sentences } = useAppSelector(s => s.general)
   return (
-    <button className="p-3 bg-sky-800 rounded-lg" onClick={() => downloadJSON(sentences)}>Export</button>
+    <button className="p-3 flex items-center gap-2 bg-sky-800 hover:bg-sky-700 smoother-2 rounded-lg" onClick={() => downloadJSON(sentences)}><HiArrowDownTray size={20} /> Export</button>
   );
 };
